@@ -7,6 +7,9 @@
 	--color-button: black;
 	--border-customers: #8E8F99;
 
+	--primary-margin-btn-item: 24px;
+
+	--transition-color: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
 	--footer:#F4F4FD;
 	--footer-p:#E7E9FC;
@@ -62,32 +65,40 @@ button {
 	cursor: pointer;
 }
 
+address {
+	font-style: normal;
+}
+
 /* __________ul__________ */
 .list {
 	list-style: none;
+	padding-left: 0;
+	margin: 0;
+
 	color: var(--title-text-color);
 }
 
 /* __________a__________ */
 .link {
 	text-decoration: none;
+	color: inherit;
 }
 
 
 
 /* __________HEADER__________ */
 .header {
-	padding-top: 24px;
-	padding-bottom: 24px;
 	border-bottom: 1px solid var(--footer-p);
+
+	box-shadow: 0px 2px 1px rgba(46, 47, 66, 0.08), 
+	0px 1px 1px rgba(46, 47, 66, 0.16), 
+	0px 1px 6px rgba(46, 47, 66, 0.08);
 }
 
 .container {
 	width: 1158px;
-	margin-left: auto;
-	margin-right: auto;
-	padding-left: 15px;
-	padding-right: 15px;
+	padding: 0 15px;
+	margin: 0 auto;
 }
 
 .header-container {
@@ -133,31 +144,67 @@ button {
 	margin-left: auto;
 }
 
-.nav-item:not(:last-child) {
+.nav-list > .nav-item:not(:last-child) {
 	margin-right: 40px;
 }
 
 .nav-link {
+	display: block;
+	padding: 24px 0 27px;
+	position: relative;
+
 	font-weight: 500;
 	line-height: 1.5;
 	letter-spacing: 0.02em;
-	color: var(--primary-text-color)
+	color: var(--primary-text-color);
+
+	transition: color var(--transition-color); 
 }
 
-.item {
+.nav-link.current {
+	color: var(--bg-button-main);
+}
+
+.nav-link.current:after {
+	content: '';
+	display: block;
+	position: absolute;
+	left: 0;
+	bottom: -1px;
+	height: 4px;
+	width: 100%;
+
+	background-color: var(--bg-button-main);
+	border-radius: 2px;
+}
+
+.list > .item:not(:last-child) {
 	margin-right: 40px;
 }
 
 .contact-link {
+	display: block;
+	padding: 24px 0 27px;
+
 	line-height: 1.5;
 	letter-spacing: 0.02em;
 	color: var(--title-text-color);
+
+	transition: color var(--transition-color);
 }
 
 .phone-link {
 	line-height: 1.5;
 	letter-spacing: 0.02em;
 	color: var(--title-text-color);
+
+	display: block;
+	padding: 24px 0 27px;
+}
+
+.contact-link:hover,
+.contact-link:focus {
+	color: var(--accent-color);
 }
 
 
@@ -392,8 +439,8 @@ button {
 	border: 1px solid #8E8F99;
 	border-radius: 4px;
 
-	transition: border-color: var(--bg-button-main);
-
+	transition: border-color var(--bg-button-main),
+	color var(--bg-button-main);
 }
 
 .section-customers-icons-list {
@@ -500,7 +547,6 @@ button {
 .btn-list {
 	display: flex;
 	justify-content: center;
-	gap: 24px;
 	margin-bottom: 72px;
 }
 
@@ -543,11 +589,18 @@ button {
 	border: 1px solid #e7e9fc;
 	border-radius: 4px;
 	border: none;
-
 	cursor: pointer;
+
+	padding: 8px 16px;
 	
-	
-	padding: 12px 24px;
+	transition: background-color var(--transition-color),
+	color var(--transition-color),
+	border-color var(--transition-color),
+	box-shadow var(--transition-color);
+}
+
+.btn-list .main-item:not(:last-child) {
+	margin-right: var(--primary-margin-btn-item);
 }
 
 .btn:hover,
